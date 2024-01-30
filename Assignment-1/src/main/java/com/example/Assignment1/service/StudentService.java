@@ -1,0 +1,32 @@
+package com.example.Assignment1.service;
+
+import com.example.Assignment1.entity.Student;
+import com.example.Assignment1.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class StudentService {
+
+    @Autowired
+    private StudentRepository studentRepository;
+
+    public Student saveStudent(Student student) {
+        return studentRepository.save(student);
+    }
+
+    public Student findById(int id) {
+        return studentRepository.findById(id);
+    }
+
+    public List<Student> getAllStudents() {
+        return studentRepository.getAllStudents();
+    }
+
+    public Student updateStudent(Student updatedStudent) { return studentRepository.update(updatedStudent); }
+
+    public boolean deleteStudentById(int id) { return studentRepository.deleteById(id); }
+
+}
