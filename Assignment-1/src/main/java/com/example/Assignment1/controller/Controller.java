@@ -4,8 +4,6 @@ package com.example.Assignment1.controller;
 import com.example.Assignment1.entity.Student;
 import com.example.Assignment1.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,31 +18,39 @@ public class Controller {
     // Create a new student
     @PostMapping("/createStudent")
     public Student createStudent (@RequestBody Student student) {
+        // Call the service method to save the new student
         return studentService.saveStudent(student);
     }
 
     // Retrieve all students
     @GetMapping("/allStudents")
     public List<Student> getAllStudents() {
+        // Call the service method to get a list of all students
         return studentService.getAllStudents();
     }
 
     // Retrieve a student by ID
     @GetMapping("/{studentId}")
     public Student getStudentById(@PathVariable int studentId) {
+        // Call the service method  to find and return a student by ID
         return studentService.findById(studentId);
     }
 
-    @PutMapping("/updateStudent")
-    public Student updateStudent(@RequestBody Student updatedStudent) { return studentService.updateStudent(updatedStudent); }
+    // Update a student by ID
+    @PutMapping("/updateStudent/{studentId}")
+    public Student updateStudent(@PathVariable int studentId, @RequestBody Student updatedStudent) {
+        // Call the service method to update the student with the provided ID
+        return studentService.updateStudent(studentId, updatedStudent);
+    }
 
+    // Delete a student by ID
     @DeleteMapping("/deleteStudent/{studentId}")
     public String deleteStudent(@PathVariable int studentId) {
+        // Check if the student with the given ID exists and delete it
         if (studentService.deleteStudentById(studentId)) {
             return "Student deleted successfully";
         } else {
             return "Student not found";
         }
     }
-
 }

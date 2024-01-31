@@ -13,20 +13,33 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
+    // Save a new student
     public Student saveStudent(Student student) {
+        // Delegate the save operation to the repository
         return studentRepository.save(student);
     }
 
+    // Find a student by ID
     public Student findById(int id) {
+        // Delegate the find operation to the repository
         return studentRepository.findById(id);
     }
 
+    // Get a list of all students
     public List<Student> getAllStudents() {
+        // Delegate the get all operation to the repository
         return studentRepository.getAllStudents();
     }
 
-    public Student updateStudent(Student updatedStudent) { return studentRepository.update(updatedStudent); }
+    // Update a student by ID
+    public Student updateStudent(int id, Student updatedStudent) {
+        // Delegate the update operation to the repository
+        return studentRepository.update(id, updatedStudent);
+    }
 
-    public boolean deleteStudentById(int id) { return studentRepository.deleteById(id); }
-
+    // Delete a student by ID
+    public boolean deleteStudentById(int id) {
+        // Delegate the delete operation to the repository
+        return studentRepository.deleteById(id);
+    }
 }
