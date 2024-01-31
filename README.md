@@ -1,6 +1,6 @@
 # Spring Boot CRUD Operations
 
-This proect demonstrates the implementation of CRUD (Create, Read, Update, Delete) operations for a single entity using Spring Boot and Java.
+This project demonstrates the implementation of CRUD (Create, Read, Update, Delete) operations for a single entity using Spring Boot and Java.
 
 ## Features
 
